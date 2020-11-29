@@ -26,6 +26,16 @@ var firebaseConfig = {
       })
 
 }
+  fs=()=>{
+    face_provider = new firebase.auth.FacebookAuthProvider()
+        firebase.auth().signInWithPopup(face_provider).then(function(result){
+            console.log(result)
+            console.log("Su")
+        }).catch(function(err){
+            console.log(err)
+            console.log("fa")
+        })
+    }
 /*const createForm = document.querySelector('#create-form');
 createForm.addEventListener('submit', (e) => {
   e.preventDefault();
