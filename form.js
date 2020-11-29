@@ -100,7 +100,7 @@ signupForm.addEventListener('submit', (e) => {
         phone: signupForm['phone'].value,
     });
   }).then(() => {
-    window.location.replace("#");
+    window.location.replace("home.html");
     signupForm.reset();
   });
 });
@@ -115,7 +115,7 @@ loginForm.addEventListener('submit', (e) => {
 
   // log the user in
   auth.signInWithEmailAndPassword(email, password).then((cred) => {
-    window.location.replace("#");
+    window.location.replace("home.html");
     loginForm.reset();
   });
 
