@@ -35,14 +35,16 @@
                             <div class="form-group">
                                 <label for="phone"><i class="zmdi zmdi-email"></i></label>
                                 <input type="text" name="your_phone" id="phone" placeholder="Your Phone Number" class="input-text" required>
+                                                              <button type="button" onclick="phoneAuth();">SendCode</button>
                               </div>
-                              <button type="button" onclick="phoneAuth();">SendCode</button>
+
                             
                              <div class="form-group">
                                 <label for="verificationCode"><i class="zmdi zmdi-email"></i></label>
                                 <input type="text" id="verificationCode" placeholder="Enter verification code" class="input-text" required>
+                                 <button type="button" onclick="codeverify();">Verify code</button>
                             </div>
-                            <button type="button" onclick="codeverify();">Verify code</button>
+                            
                             <div class="form-group">
                                 <label for="pass"><i class="zmdi zmdi-lock"></i></label>
                                 <input type="password" name="pass" id="password"  placeholder="Password" required/>
