@@ -46,10 +46,12 @@ function codeverify() {
     });
 }
 function mailAuth(){
-    var user = firebase.auth().your_email;
+    var user = firebase.auth();
 
-user.sendEmailVerification().then(function() {
+user.sendEmailVerification(your_email)
+    .then(()=> {
   // Email sent.
+    console.log("Message sent");
     alert("Message sent");
 }).catch(function(error) {
   // An error happened.
