@@ -46,16 +46,8 @@ function codeverify() {
     });
 }
 function mailAuth(){
-    var user = firebase.auth();
-
-user.sendEmailVerification(your_email)
-    .then(()=> {
-  // Email sent.
-    console.log("Message sent");
-    alert("Message sent");
-}).catch(function(error) {
-  // An error happened.
-    alert(error.message);
+    firebase.auth().onAuthStateChanged(function(your_email) {
+  user.sendEmailVerification(); 
 });
 }
 
