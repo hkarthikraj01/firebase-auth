@@ -7,7 +7,7 @@ function render() {
 }
 function phoneAuth() {
     //get the number
-    var number=document.getElementById('number').value;
+    var number=document.getElementById('phone').value;
     //phone number authentication function of firebase
     //it takes two parameter first one is number,,,second one is recaptcha
     firebase.auth().signInWithPhoneNumber(number,window.recaptchaVerifier).then(function (confirmationResult) {
