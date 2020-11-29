@@ -108,11 +108,41 @@ signupForm.addEventListener('submit', (e) => {
         email: signupForm['your_email'].value,
         phone: signupForm['phone'].value,
     });
-  }).then(() => {
+  }).then(function(user){
+      if(user && user.emailVerified === false){
+        user.sendEmailVerification().then(function(){
+          console.log("email verification sent to user");
+        });
+      }
+    }).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+
+      console.log(errorCode, errorMessage);
+    });
+});
+/*
+.then(() => {
     window.location.replace("home.html");
     signupForm.reset();
   });
-});
+  
+  
+.then(function(user){
+      if(user && user.emailVerified === false){
+        user.sendEmailVerification().then(function(){
+          console.log("email verification sent to user");
+        });
+      }
+    }).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+
+      console.log(errorCode, errorMessage);
+    });
+*/
 
 const loginForm = document.querySelector('#login-form');
 loginForm.addEventListener('submit', (e) => {
