@@ -16,7 +16,7 @@
             // Initialize Firebase
             firebase.initializeApp(firebaseConfig);
          
-            gs=()=>{
+          /*  gs=()=>{
             base_provider = new firebase.auth.GoogleAuthProvider()
                 firebase.auth().signInWithPopup(base_provider).then(function(result){
                     console.log(result)
@@ -26,7 +26,17 @@
                     console.log("fa")
                 })
 
-         }
+         }*/
+         fs=()=>{
+            face_provider = new firebase.auth.FacebookAuthProvider()
+                firebase.auth().signInWithPopup(face_provider).then(function(result){
+                    console.log(result)
+                    console.log("Su")
+                }).catch(function(err){
+                    console.log(err)
+                    console.log("fa")
+                })
+            }
         </script>        
     </body>
 </html>
