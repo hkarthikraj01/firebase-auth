@@ -46,7 +46,7 @@ function codeverify() {
     });
 }
 function mailAuth(){
-    var user = firebase.auth().currentUser;
+    var user = document.getElementById('your_email').value;
 
 user.sendEmailVerification().then(function() {
   // Email sent.
