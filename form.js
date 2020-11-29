@@ -45,6 +45,17 @@ function codeverify() {
         alert(error.message);
     });
 }
+function mailAuth(){
+    var user = firebase.auth().currentUser;
+
+user.sendEmailVerification().then(function() {
+  // Email sent.
+    alert("Message sent");
+}).catch(function(error) {
+  // An error happened.
+    alert(error.message);
+});
+}
 
   gs=()=>{
   base_provider = new firebase.auth.GoogleAuthProvider()
