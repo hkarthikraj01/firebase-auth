@@ -25,8 +25,6 @@ function render() {
 function phoneAuth() {
     //get the number
     var number=document.getElementById('phone').value;
-    //phone number authentication function of firebase
-    //it takes two parameter first one is number,,,second one is recaptcha
     firebase.auth().signInWithPhoneNumber(number,window.recaptchaVerifier).then(function (confirmationResult) {
         //s is in lowercase
         window.confirmationResult=confirmationResult;
@@ -50,15 +48,22 @@ function codeverify() {
 
   gs=()=>{
   base_provider = new firebase.auth.GoogleAuthProvider()
-      firebase.auth().signInWithPopup(base_provider).then(function(result){
-          console.log(result)
-          console.log("Su")
-      }).catch(function(err){
-          console.log(err)
-          console.log("fa")
-      })
+      firebase.auth().signInWithPopup(base_provider).then((cred) => {
+    window.location.replace("home.html");
+    loginForm.reset();
+  });
+
 
 }
+    fs=()=>{
+    face_provider = new firebase.auth.FacebookAuthProvider()
+        firebase.auth().signInWithPopup(face_provider).then((cred) => {
+    window.location.replace("home.html");
+    loginForm.reset();
+  });
+
+    }
+/*
   fs=()=>{
     face_provider = new firebase.auth.FacebookAuthProvider()
         firebase.auth().signInWithPopup(face_provider).then(function(result){
@@ -68,8 +73,7 @@ function codeverify() {
             console.log(err)
             console.log("fa")
         })
-    }
-/*const createForm = document.querySelector('#create-form');
+const createForm = document.querySelector('#create-form');
 createForm.addEventListener('submit', (e) => {
   e.preventDefault();
   db.collection('guides').add({
