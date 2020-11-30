@@ -52,6 +52,7 @@ function codeverify() {
     window.location.replace("home.html");
     loginForm.reset();
   });
+ }
      
   gs=()=>{
   base_provider = new firebase.auth.GoogleAuthProvider()
