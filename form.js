@@ -48,23 +48,30 @@ function codeverify() {
 //const auth = firebase.auth();
 
 //auth.languageCode = 'DE_de';
+const resetPassword = document.querySelector('#resetPassword');
+resetPassword.addEventListener('submit', (e) => {
+  e.preventDefault();
+  
+  // get user info
+  const email = resetPassword['mail'].value;
+ // const password = loginForm['login-password'].value;
 
-auth.useDeviceLanguage();
-
-const resetPasswordFunction = () => {
-    const email = mailField.value;
-
-    auth.sendPasswordResetEmail(email)
-    .then(() => {
+  // log the user in
+ auth.sendPasswordResetEmail(email).then(() => {
         console.log('Password Reset Email Sent Successfully!');
-    })
-    .catch(error => {
+     alert("Password Reset Email Sent Successfully!");
+    loginForm.reset();
+  }).catch(error => {
         console.error(error);
+     alert(error.message);
     })
-}
+
+});
 
 
-resetPassword.addEventListener('click', resetPasswordFunction);
+
+
+
 
      
   gs=()=>{
