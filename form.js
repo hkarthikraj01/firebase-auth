@@ -45,7 +45,7 @@ function codeverify() {
         alert(error.message);
     });
 }
-const auth = firebase.auth();
+//const auth = firebase.auth();
 
 //auth.languageCode = 'DE_de';
 
