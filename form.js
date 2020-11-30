@@ -101,7 +101,8 @@ createForm.addEventListener('submit', (e) => {
    
     createForm.reset();
   })
-});*/
+});
+
 const signupForm = document.querySelector('#signup-form');
 signupForm.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -122,27 +123,75 @@ signupForm.addEventListener('submit', (e) => {
     signupForm.reset();
   });
 });
-/*
-.then(() => {
-    window.location.replace("home.html");
-    signupForm.reset();
-  });
-  
-  
-.then(function(user){
-      if(user && user.emailVerified === false){
-        user.sendEmailVerification().then(function(){
-          console.log("email verification sent to user");
-        });
-      }
-    }).catch(function(error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-
-      console.log(errorCode, errorMessage);
-    });
 */
+const signupForm = document.querySelector('#signup-form');
+signupForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  
+  // get user info
+  const email = signupForm['your_email'].value;
+  const password = signupForm['password'].value;
+
+  // sign up the user & add firestore data
+  auth.createUserWithEmailAndPassword(email, password).then(cred => {
+    return db.collection('users').doc(cred.user.uid).set({
+        name: signupForm['full_name'].value,
+        email: signupForm['your_email'].value,
+        phone: signupForm['phone'].value,
+    });
+  }).then(() => {
+   
+    console.log('Signed Up Successfully !');
+      alert('Signed Up Successfully !');
+      sendVerificationEmail();
+  }).catch(error => {
+      console.error(error);
+  })
+});
+const sendVerificationEmail = () => {
+    //Built in firebase function responsible for sending the verification email
+    auth.currentUser.sendEmailVerification()
+    .then(() => {
+        console.log('Verification Email Sent Successfully !');
+        alert('Verification Email Sent Successfully !');
+        //redirecting the user to the profile page once everything is done correctly
+        window.location.replace("home.html");
+    })
+    .catch(error => {
+        console.error(error);
+    })
+}
+/*
+const signupForm = document.querySelector('#signup-form');
+signupForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  
+  // get user info
+  const email = signupForm['signup-email'].value;
+  const password = signupForm['signup-password'].value;
+
+  // sign up the user & add firestore data
+  auth.createUserWithEmailAndPassword(email, password)
+  .then(() => {
+      console.log('Signed Up Successfully !');
+      sendVerificationEmail();
+  })
+  .catch(error => {
+      console.error(error);
+  })
+});
+const sendVerificationEmail = () => {
+    //Built in firebase function responsible for sending the verification email
+    auth.currentUser.sendEmailVerification()
+    .then(() => {
+        console.log('Verification Email Sent Successfully !');
+        //redirecting the user to the profile page once everything is done correctly
+        window.location.assign('../profile');
+    })
+    .catch(error => {
+        console.error(error);
+    })
+}*/
 
 const loginForm = document.querySelector('#login-form');
 loginForm.addEventListener('submit', (e) => {
