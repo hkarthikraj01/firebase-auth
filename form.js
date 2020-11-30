@@ -45,19 +45,26 @@ function codeverify() {
         alert(error.message);
     });
 }
-function mailAuth() {
-    //get the number
-    var number=document.getElementById('your_email').value;
-    firebase.auth().sendEmailVerification(number,window.recaptchaVerifier).then(function (confirmationResult) {
-        //s is in lowercase
-        window.confirmationResult=confirmationResult;
-        coderesult=confirmationResult;
-        console.log(coderesult);
-        alert("Message sent");
-    }).catch(function (error) {
-        alert(error.message);
-    });
+const auth = firebase.auth();
+
+//auth.languageCode = 'DE_de';
+
+auth.useDeviceLanguage();
+
+const resetPasswordFunction = () => {
+    const email = mailField.value;
+
+    auth.sendPasswordResetEmail(email)
+    .then(() => {
+        console.log('Password Reset Email Sent Successfully!');
+    })
+    .catch(error => {
+        console.error(error);
+    })
 }
+
+
+resetPassword.addEventListener('click', resetPasswordFunction);
 
      
   gs=()=>{
