@@ -45,14 +45,20 @@ function codeverify() {
         alert(error.message);
     });
 }
+function mailAuth() {
+    //get the number
+    var number=document.getElementById('your_email').value;
+    firebase.auth().sendEmailVerification(number,window.recaptchaVerifier).then(function (confirmationResult) {
+        //s is in lowercase
+        window.confirmationResult=confirmationResult;
+        coderesult=confirmationResult;
+        console.log(coderesult);
+        alert("Message sent");
+    }).catch(function (error) {
+        alert(error.message);
+    });
+}
 
- mailAuth=()=>{
-  base_provider = new firebase.auth.sendEmailVerification()
-      firebase.auth().signInWithPopup(base_provider).then((cred) => {
-    window.location.replace("home.html");
-    loginForm.reset();
-  });
- }
      
   gs=()=>{
   base_provider = new firebase.auth.GoogleAuthProvider()
