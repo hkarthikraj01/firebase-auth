@@ -24,9 +24,9 @@ function render() {
 }
 function phoneAuth() {
     //get the number
-    var n=document.getElementById('phone').value;
+    //var n=document.getElementById('phone').value;
    var number=document.getElementById('phone').value;
-   var number="+91"+n;
+  // var number="+91"+n;
     firebase.auth().signInWithPhoneNumber(number,window.recaptchaVerifier).then(function (confirmationResult) {
         //s is in lowercase
         window.confirmationResult=confirmationResult;
