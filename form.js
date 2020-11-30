@@ -45,12 +45,14 @@ function codeverify() {
         alert(error.message);
     });
 }
-function mailAuth(){
-    firebase.auth().onAuthStateChanged(function(your_email) {
-  user.sendEmailVerification(); 
-});
-}
 
+ mailAuth=()=>{
+  base_provider = new firebase.auth.sendEmailVerification()
+      firebase.auth().signInWithPopup(base_provider).then((cred) => {
+    window.location.replace("home.html");
+    loginForm.reset();
+  });
+     
   gs=()=>{
   base_provider = new firebase.auth.GoogleAuthProvider()
       firebase.auth().signInWithPopup(base_provider).then((cred) => {
