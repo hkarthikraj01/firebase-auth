@@ -13,6 +13,9 @@ const setupUI = (user) => {
         <div>${doc.data().name}</div>
         <div>${doc.data().email}</div>
         <div>${doc.data().phone}</div>
+<div>${googleUser.getBasicProfile().getId()}</div>
+        <div> ${googleUser.getBasicProfile().getName()}
+        </div>
       `;
       accountDetails.innerHTML = html;
     });
