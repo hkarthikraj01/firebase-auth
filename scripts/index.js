@@ -9,13 +9,10 @@ const setupUI = (user) => {
     // account info
     db.collection('users').doc(user.uid).get().then(doc => {
       const html = `
-        <!--div>Logged in as ${user.email}</div-->
+        <div>Logged in as ${user.email}</div>
         <div>${doc.data().name}</div>
         <div>${doc.data().email}</div>
         <div>${doc.data().phone}</div>
-<div>${googleUser.getBasicProfile().getId()}</div>
-        <div> ${googleUser.getBasicProfile().getName()}
-        </div>
       `;
       accountDetails.innerHTML = html;
     });
